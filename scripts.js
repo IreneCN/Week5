@@ -13,18 +13,28 @@ function dataLoaded(UNEMPDATA){            //UNEMPDATA is the local name for the
 	
 	var myDataArray = [];     //my Data Array is the array  of arrays
 	
+	//I need headers to be the 1st element of my array i.e. to be the 1st row
+	var headerArray = ["Date","Value"];
+	myDataArray.push(headerArray);
+	
 	//1st parameter is starting point
 	//specify starting point, ending point
 	for(i=0; i<myObsData.length; i++){
 		
 		//create reference to current object in list
 		var curObj = myObsData[i];
-		var curArray= [curObj.date, curObj.value];
-		myDataArray.push(curArray);    //pushin the little arrays into the big array myDataArray
+		var curArray= [curObj.date, Number(curObj.value)];   //Number converts the curObj from strings to numbers
+		myDataArray.push(curArray);    //pushing the little arrays into the big array, myDataArray
 		
 	}// end of for loop
+	
 	console.log(myDataArray);
 	
+	//feed data to visualization library
+	var mydataTable = google.visualization.arrayToDataTable(myDataArray);
+	//tells Google Visualization to create a line chart and give it to the
+	var myChart = new google.visualization.LineChart(document.getElementById('myChartDiv'));
+	myChart.draw(mydataTable);
 }
 
 
