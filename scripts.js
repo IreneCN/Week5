@@ -38,7 +38,7 @@ function dataLoaded(UNEMPDATA){            //UNEMPDATA is the local name for the
           title: "Unemployment Since 1980"
         };
 	//tells Google Visualization to create a line chart and give it to the
-	var myChart = new google.visualization.LineChart(document.getElementById('myChartDiv'));
+	var myChart = new google.visualization.BarChart(document.getElementById('myChartDiv')); //You can change the type of chart e.g. BarChart to LineChart etc
 	myChart.draw(mydataTable,chartOptions);
 }
 
