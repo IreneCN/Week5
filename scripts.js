@@ -32,9 +32,14 @@ function dataLoaded(UNEMPDATA){            //UNEMPDATA is the local name for the
 	
 	//feed data to visualization library
 	var mydataTable = google.visualization.arrayToDataTable(myDataArray);
+	
+	//create options object to actually customize the look of our chart
+	var chartOptions = {
+          title: "Unemployment Since 1980"
+        };
 	//tells Google Visualization to create a line chart and give it to the
 	var myChart = new google.visualization.LineChart(document.getElementById('myChartDiv'));
-	myChart.draw(mydataTable);
+	myChart.draw(mydataTable,chartOptions);
 }
 
 
